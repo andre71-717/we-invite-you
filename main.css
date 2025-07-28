@@ -220,9 +220,7 @@ a {
 }
 
 @media (max-width: 500px) {
-  .overlay {
-    display: none;
-  }
+  
   .hero-name-mobile {
     display: block;
     position: absolute;
