@@ -1,28 +1,26 @@
 document.addEventListener("DOMContentLoaded", function () {
   const enterLink = document.getElementById('enterLink');
-  
-  if (!enterLink) {
-    console.warn("⚠️ Could not find enterLink!");
+  const audio = document.getElementById('bgMusic');
+
+  if (!enterLink || !audio) {
+    console.warn("⚠️ Missing audio or button");
     return;
   }
 
-  enterLink.addEventListener('click', function (e) {
-    e.preventDefault();
-
-    // Create a hidden audio element on the fly
-    const audio = new Audio('./Music/Lil Wayne feat. Bruno Mars - Mirror (Original Instrumental).mp3');
-    audio.loop = true;
+  enterLink.addEventListener('click', function () {
     audio.muted = false;
-
     audio.play().then(() => {
       console.log("✅ Music started with sound");
-      window.location.href = './main.html';
+      setTimeout(() => {
+        window.location.href = './main.html';
+      }, 500);
     }).catch(err => {
       console.error("❌ Failed to play music:", err);
-      window.location.href = './main.html'; // still go anyway
+      window.location.href = './main.html';
     });
   });
 });
+
 
   function updateCountdown() {
   const weddingDate = new Date("2025-10-05T00:00:00");

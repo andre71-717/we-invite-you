@@ -16,21 +16,8 @@ body {
   text-align: center;
 }
 
-
-.btn {
-  margin-top: 20px;
-  padding: 10px 20px;
-  border: 2px solid rgb(0, 0, 0);
-  border-radius: 25px;
-  background: transparent;
-  color: white;
-  font-family: inherit;
-  cursor: pointer;
-  text-decoration: none;
-}
-
 .overlay {
-    margin-top: 25%;
+  margin-top: 25%;
 }
 
 .overlay h1 {
@@ -48,12 +35,11 @@ body {
   background: transparent;
   border: 2px solid rgb(0, 0, 0);
   color: rgb(0, 0, 0);
-  text-decoration: none;
   font-size: 1rem;
   border-radius: 30px;
   transition: 0.3s ease;
+  cursor: pointer;
 }
-
 
 .enter-btn:hover {
   background: rgb(161, 157, 157);
@@ -61,23 +47,19 @@ body {
 }
 
 @media (max-width: 700px) {
-    .overlay {
+  .overlay {
     margin-top: 50%;
-}
+  }
 
-.overlay h1 {
-  font-size: 2rem;
-  margin-bottom: 15px;
-}
+  .overlay h1 {
+    font-size: 2rem;
+  }
 
-.overlay p {
-  font-size: 1rem;
-  margin-bottom: 25px;
-}
+  .overlay p {
+    font-size: 1rem;
+  }
 
-.enter-btn {
+  .enter-btn {
     font-size: 0.8rem;
+  }
 }
-
-}
-
