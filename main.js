@@ -1,18 +1,15 @@
-// Button click handler to play music and delay redirect
-document.getElementById("enterLink").addEventListener("click", () => {
-  const audio = document.getElementById("bgMusic");
-  audio.play().catch(() => {
-    console.log("Autoplay blocked by browser");
-  });
-  setTimeout(() => {
-    window.location.href = "main.html";
-  }, 1000); // Delay redirect to allow audio to start
-});
-
 // Unmute audio on page load
 document.addEventListener("DOMContentLoaded", () => {
   const audio = document.getElementById("bgMusic");
   audio.muted = false;
+});
+
+// Unmute audio on user interaction (e.g., click)
+document.body.addEventListener("click", () => {
+  const audio = document.getElementById("bgMusic");
+  if (audio.muted) {
+    audio.muted = false;
+  }
 });
 
 // Countdown logic
@@ -64,4 +61,3 @@ updateCountdown(); // Initial call
 
 setInterval(updateCountdown, 1000);
 updateCountdown(); // initial call
-
