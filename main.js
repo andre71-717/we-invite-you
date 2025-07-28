@@ -1,31 +1,25 @@
-// Ensure audio is ready before attempting to play
 document.addEventListener("DOMContentLoaded", () => {
   const audio = document.getElementById("bgMusic");
 
-  // Check if audio element exists
   if (!audio) {
     console.error("Audio element not found in main.html");
     return;
   }
 
-  // Try to unmute and play audio immediately after page load
-  audio.muted = false;
-  audio.play().catch((error) => {
-    console.error("Autoplay blocked:", error);
-    // If blocked, wait for user interaction (e.g., first click on the page)
-    document.body.addEventListener("click", () => {
+  // Function to unmute and play audio
+  const playAudio = () => {
+    if (audio.muted) {
       audio.muted = false;
       audio.play().catch((error) => {
         console.error("Failed to play audio:", error);
       });
-    }, { once: true }); // Only listen for the first click
-  });
+    }
+  };
 
-  // Log audio status for debugging
-  console.log("Audio element:", audio);
-  console.log("Audio src:", audio.src);
-  console.log("Audio muted:", audio.muted);
-  console.log("Audio paused:", audio.paused);
+  // Add listeners for click and scroll (both are user interactions)
+  document.body.addEventListener("click", playAudio, { once: true });
+  document.body.addEventListener("scroll", playAudio, { once: true });
+  document.body.addEventListener("touchstart", playAudio, { once: true });
 });
 
 // Countdown logic
