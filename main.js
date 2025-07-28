@@ -1,6 +1,8 @@
-// Unmute audio on page load
 document.addEventListener("DOMContentLoaded", () => {
   const audio = document.getElementById("bgMusic");
+  audio.play().catch(() => {
+    console.log("Autoplay blocked by browser");
+  });
   audio.muted = false;
 });
 
@@ -8,6 +10,9 @@ document.addEventListener("DOMContentLoaded", () => {
 document.body.addEventListener("click", () => {
   const audio = document.getElementById("bgMusic");
   if (audio.muted) {
+    audio.play().catch(() => {
+      console.log("Autoplay blocked by browser");
+    });
     audio.muted = false;
   }
 });
