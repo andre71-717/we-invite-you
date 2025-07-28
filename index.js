@@ -1,7 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const urlParams = new URLSearchParams(window.location.search);
-    const shouldPlay = urlParams.get("playMusic") === "true";
-
     const music = document.getElementById("bgMusic");
 
     if (!music) {
@@ -9,15 +6,15 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    if (shouldPlay) {
-      // Allow sound
-      music.muted = false;
+    const shouldPlay = sessionStorage.getItem("playMusic") === "yes";
 
-      // Try to play the music
+    if (shouldPlay) {
+      music.muted = false;
       music.play().then(() => {
-        console.log("Music started with sound!");
+        console.log("Music started successfully");
+        sessionStorage.removeItem("playMusic"); // optional: clear the flag
       }).catch((err) => {
-        console.warn("Music blocked, waiting for extra interaction:", err);
+        console.warn("Music blocked:", err);
       });
     }
   });
