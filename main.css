@@ -1,0 +1,280 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Libre Baskerville', serif;
+  line-height: 1.7;
+  color: #fff;
+  background-color: #000;
+}
+
+h1, h2 {
+  font-family: Georgia, serif !important;
+  font-weight: 400;
+}
+
+/* ===== Hero Section ===== */
+#hero-video {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.hero {
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('./Images&Video/bcg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+  opacity: 0.9; 
+}
+
+.story, .details, .rsvp {
+  background: transparent;
+  position: relative;
+  z-index: 1;
+  padding: 80px 40px;
+  color: white;
+}
+
+.countdown-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 10px;
+  font-family: 'Arial', sans-serif;
+  font-family: 'Libre Baskerville', serif;
+}
+
+.time-box {
+  text-align: center;
+  color: white;
+}
+
+.time-box span {
+  font-size: 35px;
+  font-weight: bold;
+  display: block;
+}
+
+.time-box small {
+  font-size: 16px;
+  opacity: 0.85;
+}
+
+/* Mobile adjustments */
+@media (max-width: 370px) {
+  .shared-background {
+    background-size: contain; 
+    background-position: top center; 
+    min-height: auto !important; 
+    height: auto !important; 
+  }
+}
+
+.hero .overlay {
+  position: relative;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  padding: 40px 60px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 3rem;
+}
+
+.hero p {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.countdown {
+  font-size: 1.5rem;
+  margin-top: 10px;
+  color: #fff;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* ===== Story Section ===== */
+.story {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 40px;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+.story .text {
+  max-width: 500px;
+  text-align: center;
+}
+
+.story .text h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.story .photo img {
+  width: 300px;
+  height: auto;
+  border-radius: 3%;
+  object-fit: cover;
+  opacity: 0.9;
+}
+
+/* ===== Details Section ===== */
+.details {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.details h2 {
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+}
+
+.columns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 60px;
+}
+
+.columns .left img {
+  width: 300px;
+  height: auto;
+  border-radius: 3%;
+  object-fit: cover;
+  opacity: 0.9;
+}
+
+.columns .right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+}
+
+.info h3 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 1.3rem;
+  margin-bottom: 5px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  border: 1px solid white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+/* ===== RSVP Section ===== */
+.rsvp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 40px;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.rsvp .photo img {
+  width: 300px;
+  border-radius: 3%;
+  object-fit: cover;
+  opacity: 0.9;
+}
+
+.rsvp .text {
+  max-width: 400px;
+  text-align: center;
+}
+
+@media (max-width: 500px) {
+  .overlay {
+    display: none;
+  }
+  .hero-name-mobile {
+    display: block;
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: white;
+    z-index: 2;
+  }
+
+  .hero-countdown-mobile {
+    display: block;
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    z-index: 2;
+  }
+
+  .hero-countdown-mobile p {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .countdown {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .countdown div {
+    text-align: center;
+  }
+
+  .countdown span {
+    display: block;
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+
+  .countdown small {
+    display: block;
+    font-size: 0.8rem;
+  }
+} 
+
+
+
+  
+
+  
