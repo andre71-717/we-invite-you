@@ -1,24 +1,26 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const music = document.getElementById("bgMusic");
+    const urlParams = new URLSearchParams(window.location.search);
+    const shouldPlay = urlParams.get("playMusic") === "true";
 
-  if (!music) {
-    console.error("Audio element not found!");
-    return;
-  }
+    const music = document.getElementById("bgMusic");
 
-  // Unmute and play music after load — now allowed because of the prior click
-  music.muted = false;
+    if (!music) {
+      console.error("Audio element not found!");
+      return;
+    }
 
-  // Try playing immediately
-  music.play().catch((err) => {
-    console.warn("Play failed initially:", err);
-    // fallback — wait for one more click if needed
-    document.addEventListener("click", () => {
-      music.play().catch(console.error);
-    }, { once: true });
+    if (shouldPlay) {
+      // Allow sound
+      music.muted = false;
+
+      // Try to play the music
+      music.play().then(() => {
+        console.log("Music started with sound!");
+      }).catch((err) => {
+        console.warn("Music blocked, waiting for extra interaction:", err);
+      });
+    }
   });
-});
-
 
   function updateCountdown() {
   const weddingDate = new Date("2025-10-05T00:00:00");
