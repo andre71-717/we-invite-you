@@ -1,20 +1,31 @@
+// Ensure audio is ready before attempting to play
 document.addEventListener("DOMContentLoaded", () => {
   const audio = document.getElementById("bgMusic");
-  audio.play().catch(() => {
-    console.log("Autoplay blocked by browser");
-  });
-  audio.muted = false;
-});
 
-// Unmute audio on user interaction (e.g., click)
-document.body.addEventListener("click", () => {
-  const audio = document.getElementById("bgMusic");
-  if (audio.muted) {
-    audio.play().catch(() => {
-      console.log("Autoplay blocked by browser");
-    });
-    audio.muted = false;
+  // Check if audio element exists
+  if (!audio) {
+    console.error("Audio element not found in main.html");
+    return;
   }
+
+  // Try to unmute and play audio immediately after page load
+  audio.muted = false;
+  audio.play().catch((error) => {
+    console.error("Autoplay blocked:", error);
+    // If blocked, wait for user interaction (e.g., first click on the page)
+    document.body.addEventListener("click", () => {
+      audio.muted = false;
+      audio.play().catch((error) => {
+        console.error("Failed to play audio:", error);
+      });
+    }, { once: true }); // Only listen for the first click
+  });
+
+  // Log audio status for debugging
+  console.log("Audio element:", audio);
+  console.log("Audio src:", audio.src);
+  console.log("Audio muted:", audio.muted);
+  console.log("Audio paused:", audio.paused);
 });
 
 // Countdown logic
